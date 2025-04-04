@@ -5,12 +5,10 @@
 Wonder is an immersive pixel art fighting game that combines character customization, elemental powers, and strategic turn-based combat. Set in a vibrant 8-bit world, players create their unique character, master elemental abilities, and battle against challenging opponents in visually stunning arenas.
 
 ## How to run the game?
-npm install
-# or
+npm install or
 yarn install
 
-npm run dev
-# or
+npm run dev or
 yarn dev
 
 ## Key Features
