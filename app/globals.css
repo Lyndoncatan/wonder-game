@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 60 100% 50%;
+    --card: 0 0% 10%;
+    --card-foreground: 60 100% 50%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 60 100% 50%;
+    --primary: 60 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 60 100% 30%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 60 100% 40%;
+    --accent: 60 100% 45%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 60 100% 30%;
+    --input: 60 100% 30%;
+    --ring: 60 100% 50%;
+    --radius: 0;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 60 100% 50%;
+    --card: 0 0% 10%;
+    --card-foreground: 60 100% 50%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 60 100% 50%;
+    --primary: 60 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 60 100% 30%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 60 100% 40%;
+    --accent: 60 100% 45%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 60 100% 30%;
+    --input: 60 100% 30%;
+    --ring: 60 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.pixel-font {
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 2px;
+}
+
+.pixel-border {
+  image-rendering: pixelated;
+  box-shadow: -4px 0 0 0 #ffd700, 4px 0 0 0 #ffd700, 0 -4px 0 0 #ffd700, 0 4px 0 0 #ffd700;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+/* 8-bit animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pixel-blink {
+  animation: blink 0.5s infinite;
+}
+
+@keyframes victory-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.victory-pulse {
+  animation: victory-pulse 0.8s infinite;
+}
+
+@keyframes defeat-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.defeat-shake {
+  animation: defeat-shake 0.3s infinite;
+}
+
+/* Power effects */
+.power-lightning {
+  filter: drop-shadow(0 0 8px #f0f);
+}
+
+.power-fire {
+  filter: drop-shadow(0 0 8px #f50);
+}
+
+.power-ice {
+  filter: drop-shadow(0 0 8px #0df);
+}
+
+.power-rock {
+  filter: drop-shadow(0 0 8px #960);
+}
+
+.power-air {
+  filter: drop-shadow(0 0 8px #fff);
+}
+
+/* 8-bit characters */
+.character-pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Audio controls */
+.audio-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+/* Add these animation styles at the end of the file */
+
+/* Hit effect animation */
+@keyframes hit-flash {
+  0%,
+  100% {
+    filter: none;
+  }
+  50% {
+    filter: brightness(3) saturate(3) contrast(2) sepia(0.5) hue-rotate(320deg);
+  }
+}
+
+.hit-effect {
+  animation: hit-flash 0.3s ease-in-out;
+}
+
+/* Attack animations */
+@keyframes attack-forward {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes attack-backward {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}
+
+.player-attacking {
+  animation: attack-forward 0.5s ease-in-out;
+}
+
+.enemy-attacking {
+  animation: attack-backward 0.5s ease-in-out;
+}
+
+/* Power effect animations */
+.power-impact {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.power-impact.lightning {
+  background: radial-gradient(circle, rgba(153, 102, 255, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: lightning-pulse 0.5s ease-in-out;
+}
+
+.power-impact.fire {
+  background: radial-gradient(circle, rgba(255, 102, 0, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: fire-pulse 0.5s ease-in-out;
+}
+
+.power-impact.ice {
+  background: radial-gradient(circle, rgba(0, 204, 255, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: ice-pulse 0.5s ease-in-out;
+}
+
+.power-impact.rock {
+  background: radial-gradient(circle, rgba(204, 153, 0, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: rock-pulse 0.5s ease-in-out;
+}
+
+.power-impact.air {
+  background: radial-gradient(circle, rgba(153, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: air-pulse 0.5s ease-in-out;
+}
+
+@keyframes lightning-pulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fire-pulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes ice-pulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+}
+
+@keyframes rock-pulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes air-pulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(5deg);
+  }
+}
+
+/* Glow effect for power icon */
+.glow-effect {
+  box-shadow: 0 0 15px 5px rgba(255, 204, 0, 0.5);
+  animation: glow-pulse 2s infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px 5px rgba(255, 204, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px 10px rgba(255, 204, 0, 0.7);
+  }
+}
+
